@@ -24,7 +24,7 @@ export default {
         "--hljs-literal": "#eee",
         "--hljs-number": "#eee",
         "--hljs-regexp": "#eee",
-        "--hljs-sring": "#eee",
+        "--hljs-string": "#eee",
         "--hljs-subst": "#eee",
         "--hljs-symbol": "#eee",
         "--hljs-class": "#eee",

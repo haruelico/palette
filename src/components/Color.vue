@@ -29,7 +29,7 @@
       <label for="hljs-regexp">Regexp {{ hljs.regexp }}</label>
     </div>
     <div class='input'>
-      <input type="color" id="hljs-sring" v-model="hljs.string">
+      <input type="color" id="hljs-string" v-model="hljs.string">
       <label for="hljs-string">String {{ hljs.string }}</label>
     </div>
     <div class='input'>
@@ -194,7 +194,7 @@ export default {
         "--hljs-literal": "#eee",
         "--hljs-number": "#eee",
         "--hljs-regexp": "#eee",
-        "--hljs-sring": "#eee",
+        "--hljs-string": "#eee",
         "--hljs-subst": "#eee",
         "--hljs-symbol": "#eee",
         "--hljs-class": "#eee",
