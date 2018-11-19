@@ -13,22 +13,21 @@ export default {
   },
   data: function() {
     return {
-      code: `console.log('hello world')
-// hogehoge
-import Vue from './instance/index'
-import { initGlobalAPI } from './global-api/index'
-import { isServerRendering } from 'core/util/env'
-import { FunctionalRenderContext } from 'core/vdom/create-functional-component'
+      code: `import Foo from 'bar'
 
-initGlobalAPI(Vue)
+// sample class definition
+class Sample {
+  constructor(arg) {
+    this.greet = \`Hello $\{arg}!\`;
+    this.counter = 0;
+    this.pattern = /\\w+/;
+  }
 
-Object.defineProperty(Vue.prototype, '$isServer', {
-  get: isServerRendering
-})`,
-      color: "#ff0000",
-      style: {
-        "--background-color": "#002b36"
-      }
+  greet(argument) {
+    console.log(this.greet);
+  }
+}
+`
     };
   }
 };
