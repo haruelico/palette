@@ -1,62 +1,91 @@
 <template>
-  <div id="color" :style="colorCodes">
-    <color-input v-model="colorCodes['--hljs-background-color']" label="Background color"/>
-    <color-input v-model="colorCodes['--hljs-keyword']" label="Keyword"/>
-    <color-input v-model="colorCodes['--hljs-built_in']" label="Built_in"/>
-    <color-input v-model="colorCodes['--hljs-type']" label="Type"/>
-    <color-input v-model="colorCodes['--hljs-literal']" label="Literal"/>
-    <color-input v-model="colorCodes['--hljs-number']" label="Number"/>
-    <color-input v-model="colorCodes['--hljs-regexp']" label="Regexp"/>
-    <color-input v-model="colorCodes['--hljs-string']" label="String"/>
-    <color-input v-model="colorCodes['--hljs-subst']" label="Subst"/>
-    <color-input v-model="colorCodes['--hljs-symbol']" label="Symbol"/>
-    <color-input v-model="colorCodes['--hljs-class']" label="Class"/>
-    <color-input v-model="colorCodes['--hljs-function']" label="Function"/>
-    <color-input v-model="colorCodes['--hljs-title']" label="Title"/>
-    <color-input v-model="colorCodes['--hljs-params']" label="Params"/>
-    <color-input v-model="colorCodes['--hljs-comment']" label="Comment"/>
-    <color-input v-model="colorCodes['--hljs-doctag']" label="Doctag"/>
-    <color-input v-model="colorCodes['--hljs-meta']" label="Meta"/>
-    <color-input v-model="colorCodes['--hljs-meta-keyword']" label="Meta keyword"/>
-    <color-input v-model="colorCodes['--hljs-meta-string']" label="Meta string"/>
-    <color-input v-model="colorCodes['--hljs-section']" label="Section"/>
-    <color-input v-model="colorCodes['--hljs-tag']" label="Tag"/>
-    <color-input v-model="colorCodes['--hljs-name']" label="Name"/>
-    <color-input v-model="colorCodes['--hljs-builtin-name']" label="Builtin name"/>
-    <color-input v-model="colorCodes['--hljs-attr']" label="Attr"/>
-    <color-input v-model="colorCodes['--hljs-attribute']" label="Attribute"/>
-    <color-input v-model="colorCodes['--hljs-variable']" label="Variable"/>
-    <color-input v-model="colorCodes['--hljs-bullet']" label="Bullet"/>
-    <color-input v-model="colorCodes['--hljs-code']" label="Code"/>
-    <color-input v-model="colorCodes['--hljs-emphasis']" label="Emphasis"/>
-    <color-input v-model="colorCodes['--hljs-strong']" label="Strong"/>
-    <color-input v-model="colorCodes['--hljs-formula']" label="Formula"/>
-    <color-input v-model="colorCodes['--hljs-link']" label="Link"/>
-    <color-input v-model="colorCodes['--hljs-quote']" label="Quote"/>
-    <color-input v-model="colorCodes['--hljs-selector-tag']" label="Selector tag"/>
-    <color-input v-model="colorCodes['--hljs-selector-id']" label="Selector id"/>
-    <color-input v-model="colorCodes['--hljs-selector-class']" label="Selector class"/>
-    <color-input v-model="colorCodes['--hljs-selector-attr']" label="Selector attr"/>
-    <color-input v-model="colorCodes['--hljs-selector-pseudo']" label="Selector pseudo"/>
-    <color-input v-model="colorCodes['--hljs-template-tag']" label="Template tag"/>
-    <color-input v-model="colorCodes['--hljs-template-variable']" label="Template variable"/>
-    <color-input v-model="colorCodes['--hljs-addition']" label="Addition"/>
-    <color-input v-model="colorCodes['--hljs-deletion']" label="Deletion"/>
+  <div id="color">
+    <table>
+      <color-input
+        v-for="(cs, key) in codeStyle"
+        :key="key"
+        class="code-color-input"
+        :color-code="cs"
+        :input-id="key"
+        :style-name="styleName[key]"
+        @updateColor="updateColor"
+      />
+    </table>
   </div>
 </template>
 
+<style scoped>
+.code-color-input + .code-color-input {
+  margin-top: 5px;
+}
+</style>
+
 <script>
-import ColorInput from "./ColorInput";
+import ColorInput from './ColorInput.vue'
+
 export default {
   name: "Color",
   components: {
     ColorInput
   },
   props: {
-    colorCodes: {
+    codeStyle: {
       type: Object,
       required: true
     }
+  },
+  data: function() {
+    return {
+      styleName: {
+        "--hljs-background-color": "Background color",
+        "--hljs-keyword": "Keyword",
+        "--hljs-built_in": "Built in",
+        "--hljs-type": "Type",
+        "--hljs-literal": "Literal",
+        "--hljs-number": "Number",
+        "--hljs-regexp": "RegExp",
+        "--hljs-string": "String",
+        "--hljs-subst": "Subst",
+        "--hljs-symbol": "Symbol",
+        "--hljs-class": "Class",
+        "--hljs-function": "Function",
+        "--hljs-title": "Title",
+        "--hljs-params": "Params",
+        "--hljs-comment": "Comment",
+        "--hljs-doctag": "Doctag",
+        "--hljs-meta": "Meta",
+        "--hljs-meta-keyword": "Meta Keyword",
+        "--hljs-meta-string": "Meta String",
+        "--hljs-section": "Section",
+        "--hljs-tag": "Tag",
+        "--hljs-name": "Name",
+        "--hljs-builtin-name": "Builtin Name",
+        "--hljs-attr": "Attr",
+        "--hljs-attribute": "Attribute",
+        "--hljs-variable": "Variable",
+        "--hljs-bullet": "Bullet",
+        "--hljs-code": "Code",
+        "--hljs-emphasis": "Emphasis",
+        "--hljs-strong": "Strong",
+        "--hljs-formula": "Formula",
+        "--hljs-link": "Link",
+        "--hljs-quote": "Quote",
+        "--hljs-selector-tag": "Selector Tag",
+        "--hljs-selector-id": "Selector Id",
+        "--hljs-selector-class": "Selector Class",
+        "--hljs-selector-attr": "Selector Attr",
+        "--hljs-selector-pseudo": "Selector Pseudo",
+        "--hljs-template-tag": "Template Tag",
+        "--hljs-template-variable": "Template Variable",
+        "--hljs-addition": "Addition",
+        "--hljs-deletion": "Deletion"
+      }
+    }
+  },
+  methods: {
+    updateColor(data){
+      this.$emit('updateColor', data)
+    }
   }
-};
+}
 </script>
