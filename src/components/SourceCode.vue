@@ -52,6 +52,13 @@ pre {
   text-align: left;
   font-size: 1.4em;
 }
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background-color: var(--hljs-background-color);
+}
 </style>
 
 <style>
