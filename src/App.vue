@@ -95,11 +95,4 @@ export default {
 .color {
   flex-grow: 1;
 }
-
-.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 0.5em;
-  background-color: var(--hljs-background-color);
-}
 </style>
