@@ -1,7 +1,7 @@
 <template>
   <div id="app" :style="style">
     <SourceCode language="javascript"/>
-    <Color v-on:update-style="updateStyle"/>
+    <Color v-on:update-style="updateStyle" :color-codes="style"/>
   </div>
 </template>
 
