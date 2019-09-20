@@ -1,41 +1,56 @@
 <template>
-  <div class='input'>
-    <input type="color" :id="label" v-model="syncData">
-    <label :for="label">{{label}} {{ value }}</label>
-  </div>
+  <tr>
+    <td>
+      <input
+        :id="inputId"
+        v-model="color"
+        type="color"
+      >
+    </td>
+    <td>
+      <label class="style-name">{{ styleName }}</label>
+    </td>
+    <td>
+      <label>{{ colorCode }}</label>
+    </td>
+  </tr>
 </template>
 
 <script>
 export default {
+  name: 'ColorInput',
   props: {
-    value: {
+    colorCode: {
       type: String,
-      default: "#eeeeee"
+      required: true
     },
-    label: {
+    styleName: {
+      type: String,
+      required: true
+    },
+    inputId: {
       type: String,
       required: true
     }
   },
   computed: {
-    syncData: {
-      get: function() {
-        return this.value;
+    color: {
+      get(){
+        return this.colorCode
       },
-      set: function(val) {
-        this.$emit("input", val);
+      set(color){
+        this.$emit('updateColor', {
+          color, 
+          key: this.inputId
+        })
       }
     }
   }
-};
+}
 </script>
 
 <style scoped>
-input[type="color"] {
-  margin-right: 10px;
-}
-
-.input {
-  margin-bottom: 5px;
+.style-name {
+  padding-left: 5px;
 }
 </style>
